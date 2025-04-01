@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace MVVM_SQLSERVER.ViewModels
+namespace MVVM_SQLSERVER2.ViewModels
 {
-    class BaseViewModel
+    public partial class BaseViewModel : ObservableValidator // Cambia aquí
     {
+        [ObservableProperty]
+        private bool _isBusy;
+
+        [ObservableProperty]
+        private string _title;
     }
 }

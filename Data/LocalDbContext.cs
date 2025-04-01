@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using MVVM_SQLSERVER2.Models;
 
-namespace MVVM_SQLSERVER.Data
+namespace MVVM_SQLSERVER2.Data
 {
-    class LocalDbContext
+    public class LocalDbContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite($"Filename={Path.Combine(FileSystem.AppDataDirectory, "appdb.db3")}");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+        }
     }
 }

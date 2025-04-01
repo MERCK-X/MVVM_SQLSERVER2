@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVVM_SQLSERVER2.Models;
 
-namespace MVVM_SQLSERVER.Services.Interfaces
+namespace MVVM_SQLSERVER2.Services.Interfaces
 {
-    class IAuthService
+    public interface IAuthService
     {
+        Task<bool> RegisterAsync(User user);
+        Task<bool> LoginAsync(string email, string password);
+        Task<List<User>> GetAllUsersAsync();
     }
 }

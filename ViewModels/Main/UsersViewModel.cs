@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVVM_SQLSERVER.ViewModels.Main
 {
-    class UsersViewModel
+    public class UsersViewModel
     {
     }
 }
