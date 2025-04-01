@@ -6,6 +6,7 @@ namespace MVVM_SQLSERVER2.Services.Interfaces
     {
         Task<bool> RegisterAsync(User user);
         Task<bool> LoginAsync(string email, string password);
+        Task<bool> DeleteUserAsync(int id);
         Task<List<User>> GetAllUsersAsync();
     }
 }

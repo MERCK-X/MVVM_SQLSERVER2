@@ -36,5 +36,14 @@ namespace MVVM_SQLSERVER2.Services
         {
             return await _db.Users.ToListAsync();
         }
+
+        public async Task<bool> DeleteUserAsync(int id)
+        {
+            var user = await _db.Users.FindAsync(id);
+            if (user == null) return false;
+
+            _db.Users.Remove(user);
+            return await _db.SaveChangesAsync() > 0;
+        }
     }
 }

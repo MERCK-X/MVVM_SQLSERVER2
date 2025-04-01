@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="MVVM_SQLSERVER.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MVVM_SQLSERVER"
-    Shell.FlyoutBehavior="Disabled"
-    Title="MVVM_SQLSERVER">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:MVVM_SQLSERVER.Views"
+       xmlns:auth="clr-namespace:MVVM_SQLSERVER.Views.Auth"
+       xmlns:main="clr-namespace:MVVM_SQLSERVER.Views.Main"
+       x:Class="MVVM_SQLSERVER2.AppShell">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <ShellContent Route="Splash" ContentTemplate="{DataTemplate views:SplashScreen}"/>
+    <ShellContent Route="AuthSelection" ContentTemplate="{DataTemplate auth:AuthSelectionPage}"/>
+    <ShellContent Route="Login" ContentTemplate="{DataTemplate auth:LoginPage}"/>
+    <ShellContent Route="Register" ContentTemplate="{DataTemplate auth:RegisterPage}"/>
+    <ShellContent Route="Dashboard" ContentTemplate="{DataTemplate main:DashboardPage}"/>
+    <ShellContent Route="Users" ContentTemplate="{DataTemplate main:UsersPage}"/>
 </Shell>

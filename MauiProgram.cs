@@ -19,6 +19,24 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts => fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"));
 
+        var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<LocalDbContext>();
+            await db.Database.EnsureCreatedAsync();
+        }
+
+        return app;
+
+
+        // Inicializa la BD
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<LocalDbContext>();
+            db.Database.EnsureCreated(); // Crea tablas si no existen
+        }
+
         // Database
         builder.Services.AddDbContext<LocalDbContext>();
 

@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MVVM_SQLSERVER.Views.Main.UsersPage"
-             xmlns:viewmodel="clr-namespace:MVVM_SQLSERVER.ViewModels.Main"
-             >
+             xmlns:viewmodel="clr-namespace:MVVM_SQLSERVER2.ViewModels.Main"
+             x:DataType="viewmodel:UsersViewModel"
+             Title="Usuarios Registrados">
+
     <RefreshView Command="{Binding LoadUsersCommand}">
         <CollectionView ItemsSource="{Binding Users}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
+                    <Grid Padding="10" ColumnDefinitions="*,Auto">
                         <VerticalStackLayout>
                             <Label Text="{Binding Nombre}" FontSize="16"/>
                             <Label Text="{Binding Email}" FontSize="14"/>
                         </VerticalStackLayout>
-
                         <Button Grid.Column="1" 
                                 Text="Eliminar" 
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:UsersViewModel}}, Path=DeleteUserCommand}"
