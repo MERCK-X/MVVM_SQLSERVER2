@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace MVVM_SQLSERVER2.ViewModels
 {
-    public partial class BaseViewModel : ObservableObject
+    public partial class BaseViewModel : ObservableValidator
     {
         [ObservableProperty]
         private bool _isBusy;

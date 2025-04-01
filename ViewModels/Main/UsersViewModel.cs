@@ -27,14 +27,16 @@ namespace MVVM_SQLSERVER2.ViewModels.Main
         [RelayCommand]
         private async Task LoadUsers()
         {
+            IsBusy = true;
             Users = await _authService.GetAllUsersAsync();
+            IsBusy = false;
         }
 
         [RelayCommand]
         private async Task DeleteUser(int id)
         {
-            await _authService.DeleteUserAsync(id);
-            await LoadUsers();
+            if (await _authService.DeleteUserAsync(id))
+                await LoadUsers();
         }
     }
 }

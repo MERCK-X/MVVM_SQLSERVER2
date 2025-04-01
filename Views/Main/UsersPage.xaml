@@ -3,7 +3,7 @@
              x:Class="MVVM_SQLSERVER.Views.Main.UsersPage"
              xmlns:viewmodel="clr-namespace:MVVM_SQLSERVER2.ViewModels.Main"
              x:DataType="viewmodel:UsersViewModel"
-             Title="Usuarios Registrados">
+             Title="Usuarios">
 
     <RefreshView Command="{Binding LoadUsersCommand}">
         <CollectionView ItemsSource="{Binding Users}">
